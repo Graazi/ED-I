@@ -3,7 +3,7 @@ public class LDENode {
     private LDENode ant;
     private Pessoas info;
     
-    public LDENode(Pessoas info2) {
+    public LDENode(Pessoas info) {
     }
     public LDENode getProx() {
         return prox;

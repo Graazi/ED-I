@@ -1,6 +1,8 @@
 public class menu {
 
     public static void exibeOpcoes() {
+
+        
         System.out.println("Programa de controle de acesso.");
         System.out.println("Opções:");
         System.out.println("1 – Cadastrar;");

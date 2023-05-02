@@ -3,21 +3,30 @@ public class LDENode {
     private Integer info;
     private LDENode prox;
     
-    public LDENode getAnt() {
-        return ant;
+    public LDENode (Integer valor) {
+        this.info = valor;
     }
+
+    public LDENode getAnt() {
+        return this.ant;
+    }
+
     public void setAnt(LDENode ant) {
         this.ant = ant;
     }
+
     public Integer getInfo() {
-        return info;
+        return this.info;
     }
+
     public void setInfo(Integer info) {
         this.info = info;
     }
+
     public LDENode getProx() {
-        return prox;
+        return this.prox;
     }
+
     public void setProx(LDENode prox) {
         this.prox = prox;
     }

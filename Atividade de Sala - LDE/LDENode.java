@@ -3,8 +3,8 @@ public class LDENode{
     private LDENode prox;
     private LDENode ant;
 
-    public LDENode(char info) {
-        this.info = info;
+    public LDENode(char c) {
+        this.info = c;
     }
 
     public char getInfo() {

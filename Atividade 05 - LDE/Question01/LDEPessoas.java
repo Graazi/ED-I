@@ -54,8 +54,8 @@ public class LDEPessoas {
     }
 
 
-    private void inserirFinal (Pessoas info){
-        LDENode novo = new LDENode(info);
+    private void inserirFinal (char c){
+        LDENode novo = new LDENode(c);
         if (isEmpty()) {
             this.primeiro = novo;
             this.ultimo = novo;

@@ -22,8 +22,15 @@ public class LDEInteiros {
         this.qtd = qtd;
     }
 
-    
+    private boolean isEmpty(){
+        if (this.primeiro == null && this.ultimo == null && qtd == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     
+
 
 }

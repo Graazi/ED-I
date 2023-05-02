@@ -27,12 +27,12 @@ public class LDEInteiros {
         this.qtd = qtd;
     }
 
-    private boolean isEmpty(){
-        if (this.primeiro == null && this.ultimo == null && qtd == 0) {
-            return true;
-        } else {
-            return false;
-        }
+    public void inserirLista (Integer valor) {
+        LDENode novo = new LDENode (valor); 
+        lista1 = lista1.juntar (lista2);
+           this.primeiro = novo;
+           this.ultimo = novo;
+           this.qtd++;   
     }
     
 }

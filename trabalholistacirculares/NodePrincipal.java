@@ -1,4 +1,4 @@
-public import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -17,29 +17,29 @@ public class NodePrincipal {
     }
 
     public void adicionarTermo(String nome, String definicao) {
-        NodeSecundario noSecundario = buscarNoSecundario(nome);
-        if (noSecundario != null) {
+        NodeSecundario nodeSecundario = buscarNodeSecundario(nome);
+        if (nodeSecundario != null) {
             System.out.println("O termo " + nome + " já existe no dicionário.");
         } else {
-            noSecundario = new NodeSecundario(nome, definicao);
-            listaSecundaria.add(noSecundario);
+            nodeSecundario = new NodeSecundario(nome, definicao);
+            listaSecundaria.add(nodeSecundario);
             Collections.sort(listaSecundaria, Comparator.comparing(NodeSecundario::getNome));
         }
     }
 
     public String buscarTermo(String nome) {
-        NodeSecundario noSecundario = buscarNodeSecundario(nome);
-        if (noSecundario != null) {
-            return noSecundario.getDefinicao();
+        NodeSecundario nodeSecundario = buscarNodeSecundario(nome);
+        if (nodeSecundario != null) {
+            return nodeSecundario.getDefinicao();
         } else {
             return null;
         }
     }
 
     public boolean removerTermo(String nome) {
-        NodeSecundario noSecundario = buscarNodeSecundario(nome);
-        if (noSecundario != null) {
-            listaSecundaria.remove(noSecundario);
+        NodeSecundario nodeSecundario = buscarNodeSecundario(nome);
+        if (nodeSecundario != null) {
+            listaSecundaria.remove(nodeSecundario);
             return true;
         } else {
             return false;
@@ -48,23 +48,21 @@ public class NodePrincipal {
 
     public void exibirListaSecundaria() {
         System.out.println("===== Letra " + letra + " =====");
-        for (NodeSecundario noSecundario : listaSecundaria) {
-            System.out.println("Termo: " + noSecundario.getNome());
-            System.out.println("Definição: " + noSecundario.getDefinicao());
+        for (NodeSecundario nodeSecundario : listaSecundaria) {
+            System.out.println("Termo: " + nodeSecundario.getNome());
+            System.out.println("Definição: " + nodeSecundario.getDefinicao());
             System.out.println("----------------------");
         }
         System.out.println();
     }
 
-    private NodeSecundario buscarNoSecundario(String nome) {
-        for (NodeSecundario noSecundario : listaSecundaria) {
-            if (noSecundario.getNome().equals(nome)) {
-                return noSecundario;
+    private NodeSecundario buscarNodeSecundario(String nome) {
+        for (NodeSecundario nodeSecundario : listaSecundaria) {
+            if (nodeSecundario.getNome().equals(nome)) {
+                return nodeSecundario;
             }
         }
         return null;
     }
-}
- {
     
 }

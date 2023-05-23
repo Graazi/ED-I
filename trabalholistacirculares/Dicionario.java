@@ -1,53 +1,59 @@
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Dicionario {
-    public static void main(String[] args) {
-        Dicionario dicionario = new Dicionario();
+    private List<NodePrincipal> listaPrincipal;
 
-        Scanner scanner = new Scanner(System.in);
+    public Dicionario() {
+        listaPrincipal = new ArrayList<>();
+        for (char letra = 'A'; letra <= 'Z'; letra++) {
+            listaPrincipal.add(new NodePrincipal(letra));
+        }
+    }
 
-        boolean executando = true;
-        while (executando) {
-            System.out.println("========= DICIONÁRIO =========");
-            System.out.println("1. Cadastrar termo");
-            System.out.println("2. Remover termo");
-            System.out.println("3. Exibir dicionário");
-            System.out.println("4. Sair");
-            System.out.print("Escolha uma opção: ");
-            int opcao = scanner.nextInt();
-            scanner.nextLine(); // Limpar o buffer
+    public void adicionarTermo(String nome, String definicao) {
+        char primeiraLetra = Character.toUpperCase(nome.charAt(0));
+        NodePrincipal nodePrincipal = buscarNodePrincipal(primeiraLetra);
+        if (nodePrincipal != null) {
+            nodePrincipal.adicionarTermo(nome, definicao);
+        } else {
+            System.out.println("A letra " + primeiraLetra + " não está presente no dicionário.");
+        }
+    }
 
-            switch (opcao) {
-                case 1:
-                    System.out.print("Digite o termo: ");
-                    String termo = scanner.nextLine();
-                    System.out.print("Digite a definição: ");
-                    String definicao = scanner.nextLine();
-                    dicionario.cadastarTermo(termo, definicao);
-                    System.out.println("Termo adicionado com sucesso!");
-                    break;
-                case 2:
-                    System.out.print("Digite o termo a ser removido: ");
-                    termo = scanner.nextLine();
-                    boolean removido = dicionario.removerTermo(termo);
-                    if (removido) {
-                        System.out.println("Termo removido com sucesso!");
-                    } else {
-                        System.out.println("Termo não encontrado.");
-                    }
-                    break;
-                case 3:
-                    dicionario.exibirDicionario();
-                    break;
-                case 4:
-                    executando = false;
-                    break;
-                default:
-                    System.out.println("Opção inválida. Tente novamente.");
-                    break;
+    public String buscarTermo(String nome) {
+        char primeiraLetra = Character.toUpperCase(nome.charAt(0));
+        NodePrincipal noPrincipal = buscarNodePrincipal(primeiraLetra);
+        if (noPrincipal != null) {
+            return noPrincipal.buscarTermo(nome);
+        } else {
+            return null;
+        }
+    }
+
+    public boolean removerTermo(String nome) {
+        char primeiraLetra = Character.toUpperCase(nome.charAt(0));
+        NodePrincipal nodePrincipal = buscarNodePrincipal(primeiraLetra);
+        if (nodePrincipal != null) {
+            return nodePrincipal.removerTermo(nome);
+        } else {
+            return false;
+        }
+    }
+
+    public void exibirDicionario() {
+        for (NodePrincipal nodePrincipal : listaPrincipal) {
+            nodePrincipal.exibirListaSecundaria();
+        }
+    }
+
+    private NodePrincipal buscarNodePrincipal(char letra) {
+        for (NodePrincipal nodePrincipal : listaPrincipal) {
+            if (nodePrincipal.getLetra() == letra) {
+                return nodePrincipal;
             }
         }
-
-        scanner.close();
+        return null;
     }
+    
 }

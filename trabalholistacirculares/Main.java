@@ -53,19 +53,19 @@ public class Main {
                 System.out.print("Informe o nome do termo a ser removido: ");
                 String termoNome = scanner.nextLine();
 
-                // Percorre a lista principal para encontrar a lista secundária correspondente
+                
                 NodePrincipal atual = listaPrincipal.head;
                 while (atual != null) {
                     if (atual.letra == Character.toLowerCase(termoNome.charAt(0))) {
-                        // Obtém a lista secundária correspondente
-                        ListaSecundaria listaSecundaria = atual.listaSecundaria;
-                        if (listaSecundaria != null) {
-                            // Remove o termo da lista secundária
-                            listaSecundaria.removerTermo(termoNome);
+                       
+                        ListaSecundaria secList = atual.listaSecundaria;
+                        if (secList != null) {
+                           
+                            secList.removerTermo(termoNome);
 
-                            // Verifica se a lista secundária ficou vazia após a remoção
-                            if (listaSecundaria.isEmpty()) {
-                                // Remove a letra correspondente da lista principal
+                           
+                            if (secList.isEmpty()) {
+                                
                                 removerLetra(listaPrincipal, atual.letra);
                             }
                             System.out.println("Termo removido com sucesso.");
@@ -87,10 +87,10 @@ public class Main {
                     while (atualNode != null) {
                         if (atualNode.letra == Character.toLowerCase(buscarTermoNome.charAt(0))) {
                    
-                            ListaSecundaria listaSecundaria = atualNode.listaSecundaria;
-                            if (listaSecundaria != null) {
+                            ListaSecundaria secList = atualNode.listaSecundaria;
+                            if (secList != null) {
                              
-                                Termo buscarTermo = listaSecundaria.bucarTermo(buscarTermoNome);
+                                Termo buscarTermo = listaSecundaria.buscarTermo(buscarTermoNome);
                                 if (buscarTermo != null) {
                                     System.out.println("Nome: " + buscarTermo.getNome());
                                     System.out.println("Definição: " + buscarTermo.getDefinicao());
@@ -144,7 +144,7 @@ public class Main {
 
                 case 6:
                     System.out.print("Informe a letra para exibir os termos: ");
-                    String letter = scanner.nextLine().toLowerCase();
+                    String letra = scanner.nextLine().toLowerCase();
 
                    
                     NodePrincipal letraNode = listaPrincipal.head;
@@ -232,7 +232,7 @@ public class Main {
     }
 
     private static void exibirTodosTermos(ListaPrincipal listaPrincipal) {
-        PrincipalNode atual = listaPrincipal.head;
+        NodePrincipal atual = listaPrincipal.head;
         while (atual != null) {
             if (atual.listaSecundaria != null) {
                 atual.listaSecundaria.exibirTermo();

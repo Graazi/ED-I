@@ -1,6 +1,6 @@
 class NodePrincipal {
     char letra;
-    NodeSecundario listaSecundaria;
+    ListaSecundaria listaSecundaria;
     NodePrincipal next;
 
     public NodePrincipal (char letra) {

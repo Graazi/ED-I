@@ -51,9 +51,7 @@ public class NodePrincipal {
         for (NodeSecundario nodeSecundario : listaSecundaria) {
             System.out.println("Termo: " + nodeSecundario.getNome());
             System.out.println("Definição: " + nodeSecundario.getDefinicao());
-            System.out.println("----------------------");
         }
-        System.out.println();
     }
 
     private NodeSecundario buscarNodeSecundario(String nome) {

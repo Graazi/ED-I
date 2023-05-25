@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dicionario {
+public class dicionario {
     private List<NodePrincipal> listaPrincipal;
 
-    public Dicionario() {
+    public dicionario() {
         listaPrincipal = new ArrayList<>();
         for (char letra = 'A'; letra <= 'Z'; letra++) {
             listaPrincipal.add(new NodePrincipal(letra));
@@ -23,9 +23,9 @@ public class Dicionario {
 
     public String buscarTermo(String nome) {
         char primeiraLetra = Character.toUpperCase(nome.charAt(0));
-        NodePrincipal noPrincipal = buscarNodePrincipal(primeiraLetra);
-        if (noPrincipal != null) {
-            return noPrincipal.buscarTermo(nome);
+        NodePrincipal nodePrincipal = buscarNodePrincipal(primeiraLetra);
+        if (nodePrincipal != null) {
+            return nodePrincipal.buscarTermo(nome);
         } else {
             return null;
         }

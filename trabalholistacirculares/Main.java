@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -6,8 +7,8 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        boolean executando = true;
-        while (executando) {
+        boolean op = true;
+        while (op) {
             System.out.println("========= DICIONÁRIO =========");
             System.out.println("1. Cadastrar termo");
             System.out.println("2. Remover termo");
@@ -40,7 +41,7 @@ public class Main {
                     dicionario.exibirDicionario();
                     break;
                 case 4:
-                    executando = false;
+                    op = false;
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");

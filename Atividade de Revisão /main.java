@@ -3,18 +3,18 @@ import java.util.Scanner;
 public class main {
     public static void main(String[] args) {
         Scanner in = new Scanner (System.in);
-        Cadastro cadFuncionarios = new Cadastro (3);
+        Cadastro cadFuncionarios = new Cadastro ();
         int op;
-        String matr;
+        String matricula;
         do {
             exibeOpcoes();
             op = in.nextInt(); in.nextLine();
             switch (op) {
                 case 1: System.out.print("Informe a matrícula do funcionário: ");
-                        matr = in.nextLine();
-                        cadFuncionarios.admitir(matr);
+                        matricula = in.nextLine();
+                        cadFuncionarios.admitirFuncionario(matricula);
                         break;
-                case 2: cadFuncionarios.exibirTodos();
+                case 2: cadFuncionarios.exibirFuncionarios();
                         break;
                 case 3: System.out.println("Em desenvolvimento");
                         break;

@@ -15,10 +15,26 @@ public class Cadastro {
             System.out.println("Cadastro não pode ser efetuado, pois já existe um funcionário com essa matrícula.");
         } else {
             Funcionario novoFuncionario = new Funcionario(matricula);
-            funcionarios[contador] = novoFuncionario;
-            contador++;
-            System.out.println("Funcionário cadastrado com sucesso!");
+            int posicaoInsercao = obterPosicaoInsercaoOrdenada(novoFuncionario);
+            if (posicaoInsercao != -1) {
+                for (int i = contador; i > posicaoInsercao; i--) {
+                    funcionarios[i] = funcionarios[i - 1];
+                }
+                funcionarios[posicaoInsercao] = novoFuncionario;
+                contador++;
+                System.out.println("Funcionário cadastrado com sucesso!");
+            } else {
+                System.out.println("Não foi possível cadastrar o funcionário!");
+            }
         }
+    }
+    
+    private int obterPosicaoInsercaoOrdenada(Funcionario novoFuncionario) {
+        int posicao = 0;
+        while (posicao < contador && funcionarios[posicao].compareTo(novoFuncionario) < 0) {
+            posicao++;
+        }
+        return posicao;
     }
 
     public void exibirFuncionarios() {
@@ -32,13 +48,16 @@ public class Cadastro {
     }
 
     public int procurarFuncionario(String matricula) {
-        for (int i = 0; i < contador; i++) {
-            if (funcionarios[i].getMatricula().equals(matricula)) {
-                return i;
-            }
+        int posicao = 0;
+        while (posicao < contador && funcionarios[posicao].getMatricula().compareTo(matricula) < 0) {
+            posicao++;
         }
-        return -1;
-    }
+        if (posicao < contador && funcionarios[posicao].getMatricula().equals(matricula)) {
+            return posicao;
+        } else {
+            return -1;
+        }
+    }    
 
     public void darAumento(String matricula, double percentualAumento) {
         int posicao = procurarFuncionario(matricula);

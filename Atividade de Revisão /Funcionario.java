@@ -51,5 +51,7 @@ public class Funcionario implements Comparable <Funcionario> {
     public void aplicarAumento (double percentual) {
         this.salario = this.salario + this.salario * percentual / 100;
     }
+    public void setAno(int ano) {
+    }
 }
     

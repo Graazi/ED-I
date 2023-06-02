@@ -8,4 +8,12 @@ public class LSENode {
     public void setProx(LSENode primeiro) {
     }
 
+    public char[] getInfo() {
+        return null;
+    }
+
+    public LSENode getProx() {
+        return null;
+    }
+
 }

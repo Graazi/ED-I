@@ -14,5 +14,12 @@ public class LSE {
             this.primeiro = novo;
         }
     }
+    public void exibir() {
+        LSENode atual = primeiro;
+        while (atual != null) {
+            System.out.println(atual.getInfo());
+            atual = atual.getProx();
+        }
+    }
 }
 

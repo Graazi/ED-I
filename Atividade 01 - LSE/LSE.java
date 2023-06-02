@@ -2,15 +2,11 @@ public class LSE {
     private LSENode primeiro;
     
     public void inserir (Funcionario f) {
-        // Inserir um novo funcionário no início da lista de funcionários
-        // Inserção não ordenada
-        // Permite repetidos
         LSENode novo;
-        novo = new LSENode ();    // criar um novo nó
-        novo.setInfo(f);          // "guardar" o funcionário no novo nó
+        novo = new LSENode ();    
+        novo.setInfo(f);          
         
-        // Inserir o novo nó na lista de nós
-        if (this.primeiro == null) {    // se a lista estiver vazia
+        if (this.primeiro == null) {    
              this.primeiro = novo;
         }
         else {

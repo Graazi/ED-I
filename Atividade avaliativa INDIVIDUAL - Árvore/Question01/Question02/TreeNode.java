@@ -1,8 +1,11 @@
+package Question01.Question02;
+
 class TreeNode<T extends Comparable<T>> { 
 
     private T info;
-    private TreeNode<T> left;
+    TreeNode<T> left;
     private TreeNode<T> right;
+    public int value;
 
     TreeNode(T info) {
         this.info = info;

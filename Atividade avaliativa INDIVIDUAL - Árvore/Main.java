@@ -1,10 +1,10 @@
 public class Main {
     public static void main (String [] args) {
-    BinaryTree<Integer> tree = new BinaryTree <> ();
+    BinaryTree<String> tree = new BinaryTree <> ();
 
 
 
-    int contagemDeFolhas = tree.countfolhas();
+    int contagemDeFolhas = tree.countfolhas(null);
     System.out.println("Quantidade de folhas: " + contagemDeFolhas);
     }
 }

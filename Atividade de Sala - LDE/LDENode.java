@@ -6,6 +6,7 @@ public class LDENode{
     public LDENode prev;
     public int rg;
     public String nome;
+    public int value;
 
     public LDENode(int valor) {
         this.info = (char) valor;

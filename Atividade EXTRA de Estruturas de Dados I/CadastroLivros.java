@@ -21,7 +21,7 @@ public class CadastroLivros {
             double preco = scanner.nextDouble();
             System.out.print("Quantidade em Estoque: ");
             int quantidadeEstoque = scanner.nextInt();
-            scanner.nextLine(); // Limpar o buffer do scanner
+            scanner.nextLine();
 
             Livro livro = new Livro(isbn, titulo, autor, preco, quantidadeEstoque);
             livros.insert(livro);

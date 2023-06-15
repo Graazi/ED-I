@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class CadastroLivros {
-    private BinaryTree<Livro> livros;
+    private BinaryTree <Livro> livros;
 
     public CadastroLivros() {
         livros = new BinaryTree<>();

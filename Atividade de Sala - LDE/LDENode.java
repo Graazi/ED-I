@@ -2,6 +2,10 @@ public class LDENode{
     private char info;
     private LDENode prox;
     private LDENode ant;
+    public LDENode next;
+    public LDENode prev;
+    public int rg;
+    public String nome;
 
     public LDENode(int valor) {
         this.info = (char) valor;

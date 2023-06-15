@@ -78,4 +78,20 @@ public class LDEPessoas {
             return false;
         }
     }
+    public void cadastrarPessoa(String nome, int rg2) {
+    }
+    public void cancelarCadastro(int rg2) {
+    }
+    public void exibirPessoas() {
+    }
+    public void exibirPessoasInverso() {
+    }
+    public boolean verificarPessoa(int rg2) {
+        return false;
+    }
+    public String quantidadePessoas() {
+        return null;
+    }
+    public void removerPessoa(int rg2) {
+    }
 }

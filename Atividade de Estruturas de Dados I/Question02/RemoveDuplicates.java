@@ -17,8 +17,3 @@ public class RemoveDuplicates {
         System.out.println("Total de ocorrências removidas: " + removedCount);
     }
 }
-
-
-
-
-

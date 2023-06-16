@@ -21,4 +21,7 @@ public class BinaryTree<T extends Comparable<T>> {
             root.inOrderTraversal();
         }
     }
+
+    public void remove(Livro livro) {
+    }
 }

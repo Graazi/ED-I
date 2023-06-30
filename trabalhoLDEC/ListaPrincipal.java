@@ -7,19 +7,21 @@ public class ListaPrincipal {
         this.primeiro = null;
     }
 
-    public void inserirTermo (nome, difinicao) {
+    public void inserirTermo (String nome, String definicao) {
         Termo termo = new Termo(nome, definicao);
-    
         char primeiraLetra = Character.toLowerCase(nome.charAt(0));
 
-        if (listaPrincipal.isEmpty() || !letraExists(listaPrincipal.primeiro, primeiraLetra)) {
-                        listaPrincipal.inserirLetra(primeiraLetra);
-                    }
-        ListaSecundaria listaSecundaria = getListaSecundaria(listaPrincipal.primeiro, primeiraLetra);
-
-        listaSecundaria.inserirTermo(termo);
-    
+        ListaPrincipal listaPrincipal = buscarTermo(String nome);
+        if ((listaPrincipal.primeiro, primeiraLetralistaPrincipal.isEmpty() || !letraExists)) {  
+            listaPrincipal.inserirLetra(primeiraLetra);
+            } else {  
+                ListaSecundaria listaSecundaria = getListaSecundaria(listaPrincipal.primeiro, primeiraLetra);
+            
+            listaSecundaria.inserirTermo(termo);
+            System.out.println("Termo cadastrado com sucesso.");
+        }
     }
+
     public void inserirLetra(char letra) {
         NodePrincipal newNode = new NodePrincipal(letra);
 

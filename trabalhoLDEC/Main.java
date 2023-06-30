@@ -64,17 +64,17 @@ public class Main {
 
                 case 3:
                     System.out.print("Informe o nome do termo para exibir a definição: ");
-                    String searchTermName = scanner.nextLine();
+                    String buscarTermoNome = scanner.nextLine();
 
                    
                     NodePrincipal atualNode = listaPrincipal.primeiro;
                     while (atualNode != null) {
-                        if (atualNode.letra == Character.toLowerCase(buscarTermo.charAt(0))) {
+                        if (atualNode.letra == Character.toLowerCase(buscarTermoNome.charAt(0))) {
                    
                             ListaSecundaria secList = atualNode.listaSecundaria;
                             if (secList != null) {
                              
-                                Termo buscarTermo = listaSecundaria.buscarTermo;
+                                Termo buscarTermo = secList.buscarTermo(buscarTermoNome);
                                 if (buscarTermo != null) {
                                     System.out.println("Nome: " + buscarTermo.getNome());
                                     System.out.println("Definição: " + buscarTermo.getDefinicao());

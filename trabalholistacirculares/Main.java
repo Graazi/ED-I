@@ -36,7 +36,7 @@ public class Main {
                     char primeiraLetra = Character.toLowerCase(nome.charAt(0));
 
                     
-                    if (listaPrincipal.isEmpty() || !letraExists(listaPrincipal.head, primeiraLetra)) {
+                    if ((listaPrincipal.head, primeiraLetralistaPrincipal.isEmpty() || !letraExists)) {
                         listaPrincipal.inserirLetra(primeiraLetra);
                     }
 

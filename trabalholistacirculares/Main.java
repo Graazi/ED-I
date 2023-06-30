@@ -10,11 +10,11 @@ public class Main {
         int choice = 0;
         do {
             System.out.println("\n===== Menu =====");
-            System.out.println("1. Cadastrar novo termo;");
+            System.out.println("1. Cadastrar termo;");
             System.out.println("2. Remover termo;");
             System.out.println("3. Exibir definição de um termo;");
             System.out.println("4. Editar termo;");
-            System.out.println("5. Exibir todos os termos em ordem alfabética;");
+            System.out.println("5. Exibir os termos em ordem alfabética;");
             System.out.println("6. Exibir termos por letra;");
             System.out.println("0. Sair");
 

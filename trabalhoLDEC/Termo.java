@@ -13,6 +13,10 @@ public class Termo {
         return nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public String getDefinicao() {
         return definicao;
     }
@@ -20,4 +24,5 @@ public class Termo {
     public void setDefinicao(String definicao) {
         this.definicao = definicao;
     }
+
 }

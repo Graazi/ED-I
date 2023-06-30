@@ -7,7 +7,7 @@ public class ListaPrincipal {
         this.primeiro = null;
     }
 
-    public void inserirTermo () {
+    public void inserirTermo (nome, difinicao) {
         Termo termo = new Termo(nome, definicao);
     
         char primeiraLetra = Character.toLowerCase(nome.charAt(0));

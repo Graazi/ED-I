@@ -69,12 +69,12 @@ public class Main {
                    
                     NodePrincipal atualNode = listaPrincipal.primeiro;
                     while (atualNode != null) {
-                        if (atualNode.letra == Character.toLowerCase(buscarTermoNome.charAt(0))) {
+                        if (atualNode.letra == Character.toLowerCase(buscarTermo.charAt(0))) {
                    
                             ListaSecundaria secList = atualNode.listaSecundaria;
                             if (secList != null) {
                              
-                                Termo buscarTermo = listaSecundaria.buscarTermo(buscarTermoNome);
+                                Termo buscarTermo = listaSecundaria.buscarTermo;
                                 if (buscarTermo != null) {
                                     System.out.println("Nome: " + buscarTermo.getNome());
                                     System.out.println("Definição: " + buscarTermo.getDefinicao());

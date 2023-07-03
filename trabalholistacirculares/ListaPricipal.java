@@ -1,3 +1,5 @@
+import trabalholistaLDE.NodePrincipal;
+
 class ListaPrincipal {
     NodePrincipal head;
 

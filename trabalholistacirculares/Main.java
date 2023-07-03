@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import trabalholistaLDE.NodePrincipal;
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

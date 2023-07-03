@@ -34,6 +34,5 @@ public class NodePrincipal {
     public void setNext(NodePrincipal next) {
         this.next = next;
     }
-
     
 }

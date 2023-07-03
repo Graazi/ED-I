@@ -81,4 +81,24 @@ public class ListaPrincipal {
     return null;
 }
 
+    public ListaPrincipal buscarTermo (String nome) {
+        ListaPrincipal listaPrincipal;
+
+        boolean achou = false;
+        ListaPrincipal atual = this.primeiro;
+        while (listaPrincipal != null) {
+            if (listaPrincipal.getNext().equals(nome) == null){
+                achou = true;
+                break;
+            } 
+            listaPrincipal = listaPrincipal.getNext();
+        }
+        if (achou == true) {
+            return listaPrincipal; 
+        } else {
+            return null;
+        }
+
+    }
+
 }

@@ -3,13 +3,14 @@ package trabalhoLDE;
 public class NodePrincipal {
     ListaSecundaria listaSecundaria;
     NodePrincipal prox;
-    private NodePrincipal ant;
-    Integer info;
+    NodePrincipal ant;
+    char letra;
 
-    public NodePrincipal (Integer valor) {
-        this.info = valor;
+    public NodePrincipal (char letra) {
+        this.letra = letra;
         this.listaSecundaria = new ListaSecundaria();
         this.prox = null;
+        this.ant = null;
     }
 
     public ListaSecundaria getListaSecundaria() {
@@ -36,13 +37,15 @@ public class NodePrincipal {
         this.ant = ant;
     }
 
-    public Integer getInfo() {
-        return info;
+    public char getLetra() {
+        return letra;
     }
 
-    public void setInfo(Integer info) {
-        this.info = info;
+    public void setLetra(char letra) {
+        this.letra = letra;
     }
+
+   
 
     
 }

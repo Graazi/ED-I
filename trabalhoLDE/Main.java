@@ -3,11 +3,10 @@ package trabalhoLDE;
 import java.util.Scanner;
 
 public class Main {
+
+    static ListaPrincipal listaPrincipal = new ListaPrincipal();
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        ListaPrincipal listaPrincipal = new ListaPrincipal();
-        
 
         int op = 0;
         do {
@@ -31,122 +30,49 @@ public class Main {
                     System.out.print("Informe a definição do termo: ");
                     String definicao = scanner.nextLine();
 
-                    Integer v;
-                    listaPrincipal.inserirTermo(valor);
+                    addTermo(nome, definicao);
+
+                    System.out.println("Termo adicionado.");
                     break;
 
                 case 2:
                 System.out.print("Informe o nome do termo a ser removido: ");
                 String termoNome = scanner.nextLine();
 
-                
-                NodePrincipal atual = listaPrincipal.primeiro;
-                while (atual != null) {
-                    if (atual.info == Character.toLowerCase(termoNome.charAt(0))) {
-                       
-                        ListaSecundaria secList = atual.listaSecundaria;
-                        if (secList != null) {
-                           
-                            secList.removerTermo(termoNome);
-
-                           
-                            if (secList.isEmpty()) {
-                                
-                                listaPrincipal.removerLetra(listaPrincipal, atual.info);
-                            }
-                            System.out.println("Termo removido com sucesso.");
-                        } else {
-                            System.out.println("Termo não encontrado.");
-                        }
-                        break;
-                    }
-                    atual = atual.prox;
-                }
+                removerTermo(termoNome);
+                    System.out.println("Termo removido.");
                 break;
 
                 case 3:
                     System.out.print("Informe o nome do termo para exibir a definição: ");
-                    String buscarTermoNome = scanner.nextLine();
+                    String termo = scanner.nextLine();
 
                    
-                    NodePrincipal atualNode = listaPrincipal.primeiro;
-                    while (atualNode != null) {
-                        if (atualNode.info == Character.toLowerCase(buscarTermoNome.charAt(0))) {
-                   
-                            ListaSecundaria secList = atualNode.listaSecundaria;
-                            if (secList != null) {
-                             
-                                Termo buscarTermo = secList.buscarTermo(buscarTermoNome);
-                                if (buscarTermo != null) {
-                                    System.out.println("Nome: " + buscarTermo.getNome());
-                                    System.out.println("Definição: " + buscarTermo.getDefinicao());
-                                } else {
-                                    System.out.println("Termo não encontrado.");
-                                }
-                            } else {
-                                System.out.println("Termo não encontrado.");
-                            }
-                            break;
-                        }
-                        atualNode = atualNode.prox;
-                    }
+                    exibirDefinicao(termo);
+
                     break;
 
                 case 4:
                     System.out.print("Informe o nome do termo a ser editado: ");
-                    String editTermoNome = scanner.nextLine();
+                    String termoEditar = scanner.nextLine();
 
-                   
-                    NodePrincipal editAtual = listaPrincipal.primeiro;
-                    while (editAtual != null) {
-                        if (editAtual.info == Character.toLowerCase(editTermoNome.charAt(0))) {
-                         
-                            ListaSecundaria editListaSecundaria = editAtual.listaSecundaria;
-                            if (editListaSecundaria != null) {
-                             
-                                Termo editTermo = editListaSecundaria.buscarTermo(editTermoNome);
-                                if (editTermo != null) {
-                                    System.out.print("Informe a nova definição do termo: ");
-                                    String newDefinicao = scanner.nextLine();
+                    System.out.print("Informe a nova definição do termo: ");
+                    String newDefinicao = scanner.nextLine();
 
-                                  
-                                    editTermo.setDefinicao(newDefinicao);
-                                    System.out.println("Termo editado com sucesso.");
-                                } else {
-                                    System.out.println("Termo não encontrado.");
-                                }
-                            } else {
-                                System.out.println("Termo não encontrado.");
-                            }
-                            break;
-                        }
-                        editAtual = editAtual.prox;
-                    }
+                    editarTermo(termoEditar, newDefinicao);
+                    
                     break;
 
                 case 5:
-                listaPrincipal.exibirTodosTermos(listaPrincipal);
+                exibirTodosTermos();
                     break;
 
                 case 6:
                     System.out.print("Informe a letra para exibir os termos: ");
-                    String letra = scanner.nextLine().toLowerCase();
+                    char letra = scanner.nextLine().charAt(0);
 
-                   
-                    NodePrincipal letraNode = listaPrincipal.primeiro;
-                    while (letraNode != null) {
-                        if (letraNode.info == letra.charAt(0)) {
-                           
-                            ListaSecundaria letraSecList = letraNode.listaSecundaria;
-                            if (letraSecList != null) {
-                                letraSecList.exibirTermo();
-                            } else {
-                                System.out.println("Nenhum termo encontrado com a letra informada.");
-                            }
-                            break;
-                        }
-                        letraNode = letraNode.prox;
-                    }
+                    exibirTermosPorLetra(letra);
+
                     break;
 
                 case 0:
@@ -160,6 +86,93 @@ public class Main {
 
         scanner.close();
     }
+    public static void addTermo(String nome, String definicao) {
+
+        char primeiraLetra = nome.charAt(0);
+                
+        NodePrincipal nodePrincipal = listaPrincipal.buscar(primeiraLetra);
+                
+        if (nodePrincipal == null) {
+                    listaPrincipal.inserir(primeiraLetra);
+                    nodePrincipal = listaPrincipal.buscar(primeiraLetra);
+        }
+                
+        Termo termo = new Termo(nome, definicao);
+                nodePrincipal.listaSecundaria.inserir(termo);
+            
+    }
     
+    public static void removerTermo(String nome) {
+                
+        char primeiraLetra = nome.charAt(0);
+                
+        NodePrincipal nodePrincipal = listaPrincipal.buscar(primeiraLetra);
+                
+        if (nodePrincipal != null) {
+                        
+        NodeSecundario nodeSecundario = nodePrincipal.listaSecundaria.buscar(nome);
+                   
+        if (nodeSecundario != null) {
+                        nodePrincipal.listaSecundaria.remover(nodeSecundario.termo);
+        
+                       
+        if (nodePrincipal.listaSecundaria.primeiro == null) {
+                            listaPrincipal.remover(primeiraLetra);
+                        }
+                    }
+                }
+            }
     
+    public static void exibirDefinicao(String nome) {
+        
+       char primeiraLetra = nome.charAt(0);
+                
+        NodePrincipal nodePrincipal = listaPrincipal.buscar(primeiraLetra);     
+                        
+            if (nodePrincipal != null) {
+                NodeSecundario nodeSecundario = nodePrincipal.listaSecundaria.buscar(nome);
+                            
+                    if (nodeSecundario != null) {
+                                System.out.println("Definition: " + nodeSecundario.termo.getDefinicao());
+                    } else {
+                                System.out.println( "Term not found.");
+                            }
+            } 
+    }
+    public static void editarTermo(String nome, String newDefinicao) {
+        char primeiraLetra = nome.charAt(0);
+        NodePrincipal nodePrincipal = listaPrincipal.buscar(primeiraLetra);
+        
+        if (nodePrincipal != null) {
+            NodeSecundario nodeSecundario = nodePrincipal.listaSecundaria.buscar(nome);
+             
+           if (nodeSecundario != null) {
+                nodeSecundario.termo.setDefinicao(newDefinicao);
+                System.out.println("Termo editado.");
+            } else {
+                System.out.println("Termo não encontrado.");
+            }
+        } 
+    }
+
+    public static void exibirTodosTermos() {
+        NodePrincipal atual = listaPrincipal.primeiro;
+                
+               while (atual != null) {
+                    System.out.println("Letra: " + atual.letra);
+                    atual.listaSecundaria.exibir();
+                    atual = atual.prox;
+                }
+    }
+    public static void exibirTermosPorLetra(char letra) {        
+        NodePrincipal nodePrincipal = listaPrincipal.buscar(letra);
+                
+                if (nodePrincipal != null) {
+                    System.out.println("Letra: " + nodePrincipal.letra);
+                    nodePrincipal.listaSecundaria.exibir();
+                } else {
+                    System.out.println("Nenhum termo encontrado com essa letra.");
+                }
+    }
+                          
 }

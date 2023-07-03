@@ -7,75 +7,72 @@ public class ListaSecundaria {
         this.primeiro = null;
     }
 
-    public void inserirTermo (Termo termo) {
+    public void inserir(Termo termo) {
         NodeSecundario newNode = new NodeSecundario(termo);
-
+        
         if (primeiro == null) {
             primeiro = newNode;
+        } else if (termo.getNome().compareToIgnoreCase(primeiro.termo.getNome()) < 0) {
+            newNode.prox = primeiro;
+            primeiro.ant = newNode;
+            primeiro = newNode;
         } else {
-            if (termo.getNome().compareTo(primeiro.termo.getNome()) < 0) {
-                newNode.prox = primeiro;
-                primeiro = newNode;
-            } else {
-                NodeSecundario atual = primeiro;
-                while (atual.prox != null && termo.getNome().compareTo(atual.prox.termo.getNome()) > 0) {
-                    atual = atual.prox;
-                }
-                newNode.prox = atual.prox;
-                atual.prox = newNode;
+            NodeSecundario atual = primeiro;
+            
+            while (atual.prox != null && termo.getNome().compareToIgnoreCase(atual.prox.termo.getNome()) > 0) {
+                atual = atual.prox;
             }
+            
+            newNode.prox = atual.prox;
+            if (atual.prox != null) {
+                atual.prox.ant = newNode;
+            }
+            
+            atual.prox = newNode;
+            newNode.ant = atual;
         }
     }
-
-    public void removerTermo(String nome) {
-        if (primeiro == null) {
-            return;
-        }
-
-        if (primeiro.termo.getNome().equals(nome)) {
-            primeiro = primeiro.prox;
-            return;
-        }
-
+    
+    public void remover(Termo termo) {
         NodeSecundario atual = primeiro;
-        NodeSecundario prev = null;
-        while (atual != null && !atual.termo.getNome().equals(nome)) {
-            prev = atual;
+        
+        while (atual != null && !atual.termo.getNome().equalsIgnoreCase(termo.getNome())) {
             atual = atual.prox;
         }
-
+            atual = atual.prox;
+        
+        
         if (atual != null) {
-            prev.prox = atual.prox;
-        }
-    }
-
-   
-    public boolean isEmpty() {
-        return primeiro == null;
-    }
-
-    public void exibirTermo() {
-        if (isEmpty()) {
-            System.out.println("Lista secundária vazia.");
-            return;
-        }
-
-        NodeSecundario atual = primeiro;
-        while (atual != null) {
-            System.out.println("Nome: " + atual.termo.getNome());
-            System.out.println("Definição: " + atual.termo.getDefinicao());
-            atual = atual.prox;
-        }
-    }
-
-    public Termo buscarTermo(String nome) {
-        NodeSecundario atual = primeiro;
-        while (atual != null) {
-            if (atual.termo.getNome().equals(nome)) {
-                return atual.termo;
+            if (atual.ant != null) {
+                atual.ant.prox = atual.prox;
+            } else {
+                primeiro = atual.prox;
             }
+            
+        }
+    }
+           
+    public NodeSecundario buscar(String termoName) {
+        NodeSecundario atual = primeiro;
+        
+        while (atual != null && !atual.termo.getNome().equalsIgnoreCase(termoName)) {
             atual = atual.prox;
         }
-        return null;
+        
+       return atual;
+    }
+    
+   public void exibir() {
+    NodeSecundario atual = primeiro;
+     
+       while (atual != null) {
+            System.out.println("Name: " + atual.termo.getNome());
+            System.out.println("Definition: " + atual.termo.getDefinicao());
+            System.out.println();
+            atual = atual.prox;
+        }
     }
 }
+
+
+           

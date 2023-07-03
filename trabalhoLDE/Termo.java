@@ -1,4 +1,4 @@
-package trabalholistaLDE;
+package trabalhoLDE;
 
 public class Termo {
     private String nome;
@@ -11,6 +11,10 @@ public class Termo {
 
     public String getNome() {
         return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getDefinicao() {

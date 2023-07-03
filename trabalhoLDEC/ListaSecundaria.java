@@ -1,7 +1,8 @@
 package trabalhoLDEC;
 
 public class ListaSecundaria {
-    NodeSecundario primeiro;
+    
+}NodeSecundario primeiro;
 
     public ListaSecundaria() {
         this.primeiro = null;
@@ -78,4 +79,3 @@ public class ListaSecundaria {
         }
         return null;
     }
-}

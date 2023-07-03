@@ -2,14 +2,14 @@ package trabalhoLDE;
 
 public class NodePrincipal {
     ListaSecundaria listaSecundaria;
-    private NodePrincipal next;
+    NodePrincipal prox;
     private NodePrincipal ant;
-    private Integer info;
+    Integer info;
 
     public NodePrincipal (Integer valor) {
         this.info = valor;
         this.listaSecundaria = new ListaSecundaria();
-        this.next = null;
+        this.prox = null;
     }
 
     public ListaSecundaria getListaSecundaria() {
@@ -20,12 +20,12 @@ public class NodePrincipal {
         this.listaSecundaria = listaSecundaria;
     }
 
-    public NodePrincipal getNext() {
-        return next;
+    public NodePrincipal getProx() {
+        return prox;
     }
 
-    public void setNext(NodePrincipal next) {
-        this.next = next;
+    public void setProx(NodePrincipal prox) {
+        this.prox = prox;
     }
 
     public NodePrincipal getAnt() {

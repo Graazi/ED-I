@@ -24,4 +24,8 @@ public class Termo {
     public void setDefinicao(String definicao) {
         this.definicao = definicao;
     }
+
+    public int compareTo(Integer valor) {
+        return 0;
+    }
 }

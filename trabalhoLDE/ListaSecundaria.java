@@ -66,8 +66,8 @@ public class ListaSecundaria {
     NodeSecundario atual = primeiro;
      
        while (atual != null) {
-            System.out.println("Name: " + atual.termo.getNome());
-            System.out.println("Definition: " + atual.termo.getDefinicao());
+            System.out.println("Nome: " + atual.termo.getNome());
+            System.out.println("Definição: " + atual.termo.getDefinicao());
             System.out.println();
             atual = atual.prox;
         }

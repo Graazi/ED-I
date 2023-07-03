@@ -31,7 +31,8 @@ public class Main {
                     System.out.print("Informe a definição do termo: ");
                     String definicao = scanner.nextLine();
 
-                    listaPrincipal.inserirTermo(null);
+                    Integer v;
+                    listaPrincipal.inserirTermo(valor);
                     break;
 
                 case 2:

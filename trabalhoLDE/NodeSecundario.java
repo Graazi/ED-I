@@ -35,7 +35,4 @@ public class NodeSecundario {
     public void setAnt(NodeSecundario ant) {
         this.ant = ant;
     }
-
-    
-    
 }

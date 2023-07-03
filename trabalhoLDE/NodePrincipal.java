@@ -44,8 +44,4 @@ public class NodePrincipal {
     public void setLetra(char letra) {
         this.letra = letra;
     }
-
-   
-
-    
 }

@@ -1,7 +1,7 @@
 package trabalhoLDE;
 
 public class ListaPrincipal {
-    private NodePrincipal primeiro;
+    NodePrincipal primeiro;
     private NodePrincipal ultimo;
     private NodePrincipal qtd;
 
@@ -21,7 +21,7 @@ public class ListaPrincipal {
                 this.primeiro.setAnt(novo);
                 this.primeiro = novo;
             }
-            System.out.println("Inserção efetuada.");
+            System.out.println("Termo cadastrado com sucesso.");
         } 
     }
 
@@ -53,6 +53,45 @@ public class ListaPrincipal {
             atual = atual.prox;
         } while (atual != primeiro);
         System.out.println();
+    }
+
+    public void removerLetra(ListaPrincipal listaPrincipal, Integer info) {
+        NodePrincipal atual = listaPrincipal.primeiro;
+        NodePrincipal prev = null;
+        while (atual != null && atual.info != info) {
+            prev = atual;
+            atual = atual.prox;
+        }
+
+        if (atual != null) {
+            if (prev == null) {
+             
+                if (atual.prox == atual) {
+                  
+                    listaPrincipal.primeiro = null;
+                } else {
+                    NodePrincipal ultimoNode = atual;
+                    while (ultimoNode.prox != atual) {
+                        ultimoNode = ultimoNode.prox;
+                    }
+                    listaPrincipal.primeiro = atual.prox;
+                    ultimoNode.prox = listaPrincipal.primeiro;
+                }
+            } else {
+                prev.prox = atual.prox;
+            }
+        }
+    }
+
+    public void exibirTodosTermos(ListaPrincipal listaPrincipal) {
+        NodePrincipal atual = listaPrincipal.primeiro;
+        while (atual != null) {
+            if (atual.listaSecundaria != null) {
+                atual.listaSecundaria.exibirTermo();
+            }
+            atual = atual.prox;
+        }
+    
     }
 
     public NodePrincipal buscar(Integer valor) {

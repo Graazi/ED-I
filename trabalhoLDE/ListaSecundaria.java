@@ -1,7 +1,6 @@
-package trabalhoLDEC;
+package trabalhoLDE;
 
 public class ListaSecundaria {
-    
     NodeSecundario primeiro;
 
     public ListaSecundaria() {
@@ -15,15 +14,15 @@ public class ListaSecundaria {
             primeiro = newNode;
         } else {
             if (termo.getNome().compareTo(primeiro.termo.getNome()) < 0) {
-                newNode.next = primeiro;
+                newNode.prox = primeiro;
                 primeiro = newNode;
             } else {
                 NodeSecundario atual = primeiro;
-                while (atual.next != null && termo.getNome().compareTo(atual.next.termo.getNome()) > 0) {
-                    atual = atual.next;
+                while (atual.prox != null && termo.getNome().compareTo(atual.prox.termo.getNome()) > 0) {
+                    atual = atual.prox;
                 }
-                newNode.next = atual.next;
-                atual.next = newNode;
+                newNode.prox = atual.prox;
+                atual.prox = newNode;
             }
         }
     }
@@ -34,7 +33,7 @@ public class ListaSecundaria {
         }
 
         if (primeiro.termo.getNome().equals(nome)) {
-            primeiro = primeiro.next;
+            primeiro = primeiro.prox;
             return;
         }
 
@@ -42,11 +41,11 @@ public class ListaSecundaria {
         NodeSecundario prev = null;
         while (atual != null && !atual.termo.getNome().equals(nome)) {
             prev = atual;
-            atual = atual.next;
+            atual = atual.prox;
         }
 
         if (atual != null) {
-            prev.next = atual.next;
+            prev.prox = atual.prox;
         }
     }
 
@@ -65,7 +64,7 @@ public class ListaSecundaria {
         while (atual != null) {
             System.out.println("Nome: " + atual.termo.getNome());
             System.out.println("Definição: " + atual.termo.getDefinicao());
-            atual = atual.next;
+            atual = atual.prox;
         }
     }
 
@@ -75,7 +74,7 @@ public class ListaSecundaria {
             if (atual.termo.getNome().equals(nome)) {
                 return atual.termo;
             }
-            atual = atual.next;
+            atual = atual.prox;
         }
         return null;
     }

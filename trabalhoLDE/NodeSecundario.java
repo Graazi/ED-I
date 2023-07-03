@@ -3,12 +3,10 @@ package trabalhoLDE;
 public class NodeSecundario {
     Termo termo;
     NodeSecundario prox;
-    private Integer info;
 
-    public NodeSecundario(Integer termo) {
-        this.info = termo;
+    public NodeSecundario(Termo termo) {
+        this.termo = termo;
         this.prox = null;
-        this.termo = new Termo(null, null);
     
     }
 
@@ -27,15 +25,5 @@ public class NodeSecundario {
     public void setProx(NodeSecundario prox) {
         this.prox = prox;
     }
-
-    public Integer getInfo() {
-        return info;
-    }
-
-    public void setInfo(Integer info) {
-        this.info = info;
-    }
-
-    
     
 }
